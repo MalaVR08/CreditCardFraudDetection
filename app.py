@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 # adjust path if needed
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = os.path.join(BASE_DIR, "fraud_model.pkl")
-SCALER_PATH = os.path.join(BASE_DIR, "scaler.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "src", "fraud_model.pkl")
+SCALER_PATH = os.path.join(BASE_DIR, "src", "scaler.pkl")
 
 model = joblib.load(MODEL_PATH)
 scaler = joblib.load(SCALER_PATH)  # if you used one
