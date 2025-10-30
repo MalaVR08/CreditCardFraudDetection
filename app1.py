@@ -26,8 +26,7 @@ for i in range(1, 29):
 features = [time] + v_features + [amount]
 
 # ✅ Backend API URL
-response = requests.post("https://creditcardfrauddetection-vn3z.onrender.com/predict", json={"features": features})
-
+API_URL = "https://creditcardfrauddetection-vn3z.onrender.com/predict"
 
 # ✅ Predict button
 if st.button("🔍 Predict"):
@@ -37,7 +36,7 @@ if st.button("🔍 Predict"):
             result = response.json()
             prediction = result["predictions"][0]
             prob = None
-            if result["probabilities"]:
+            if result.get("probabilities"):
                 prob = result["probabilities"][0][1]  # fraud probability
 
             if prediction == 1:
@@ -48,4 +47,3 @@ if st.button("🔍 Predict"):
             st.error(f"❌ Server Error: {response.status_code}")
     except Exception as e:
         st.error(f"Connection Error: {e}")
-
